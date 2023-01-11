@@ -47,7 +47,7 @@ $ npm run prepare
 <table>
   <tr>
     <td align="center">
-      <img src="https://user-images.githubusercontent.com/62709718/208676194-c22dc8af-6f06-4614-b467-6fa1dcd39e9b.png" width="100px;" alt=""/>
+      <img src="https://user-images.githubusercontent.com/62709718/211858707-046f5b18-b31f-40f1-ae24-6e992612cc5a.png" width="100px;" alt=""/>
     </td>
     <td align="center">
       <img src="https://user-images.githubusercontent.com/62709718/208676156-350f5e57-7568-497a-ba32-cf7f849ef688.png" width="100px;" alt=""/>
