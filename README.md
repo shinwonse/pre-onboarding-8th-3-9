@@ -1,8 +1,14 @@
 # Clinical Trial Search App with React.js
 
-## 배포 링크
+## 클라이언트 배포 링크
 
 [Clinical Trial Search App](https://pre-onboarding-8th-3-9.vercel.app/)
+
+## 서버 배포 링크
+
+[wanted-fe-9team-api](https://wanted-fe-9team-api.herokuapp.com/)
+
+서버는 [assignment-api_8th](https://github.com/walking-sunset/assignment-api_8th)를 클론하여 배포했습니다. 기본적인 사용법은 링크를 따라가시면 볼 수 있습니다.
 
 ## 개발 과정 및 Best Practice
 
