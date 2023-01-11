@@ -2,7 +2,7 @@
 
 ## 배포 링크
 
-[Clinical Trial Search App]()
+[Clinical Trial Search App](https://pre-onboarding-8th-3-9.vercel.app/)
 
 ## 개발 과정 및 Best Practice
 
