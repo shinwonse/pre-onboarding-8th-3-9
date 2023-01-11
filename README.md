@@ -83,7 +83,7 @@ $ npm run prepare
     </td>    
     <td align="center">
       <a href="https://github.com/shinwonse">
-        <div>shinwonse</div>
+        <div>shinwonse (팀장)</div>
       </a>
     </td>
     <td align="center">
