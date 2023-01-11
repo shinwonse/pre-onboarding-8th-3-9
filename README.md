@@ -1,46 +1,100 @@
-# Getting Started with Create React App
+# Clinical Trial Search App with React.js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 배포 링크
 
-## Available Scripts
+[Clinical Trial Search App]()
 
-In the project directory, you can run:
+## 개발 과정 및 Best Practice
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 실행 방법
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+$ npm install
+$ npm start
+```
 
-### `npm test`
+## 커밋 규칙
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+개발하시기 전에
 
-### `npm run build`
+```bash
+$ npm run prepare
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+를 통해 `husky` 설치해주세요!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+기본적인 커밋 규칙은 다음 가이드를 따릅니다. [Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 브랜치 전략
 
-### `npm run eject`
+- main (배포용 브랜치)
+- dev (개발용 브랜치)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+각 기능을 개발할 때 `feat/example`과 같이 브랜치를 생성하여 dev 브랜치로 `push`하였습니다. 이후 배포에 적용할 때에 main에 올려 배포하였습니다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 협업 방법
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<div>
+  <img src="https://user-images.githubusercontent.com/62709718/208821813-5f880759-64e4-46d4-8d2f-9721d231f4ae.png" width="200px;" />
+</div>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- 디스코드 음성 채널을 통해 회의를 진행하였습니다.
+- 디스코드 웹훅을 설정하여 디스코드 채널로 알람을 받았습니다.
 
-## Learn More
+## 팀원
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://user-images.githubusercontent.com/62709718/211858707-046f5b18-b31f-40f1-ae24-6e992612cc5a.png" width="100px;" alt=""/>
+    </td>
+    <td align="center">
+      <img src="https://user-images.githubusercontent.com/62709718/208676156-350f5e57-7568-497a-ba32-cf7f849ef688.png" width="100px;" alt=""/>
+    </td>
+    <td align="center">
+      <img src="https://user-images.githubusercontent.com/62709718/208676069-16f11acd-8447-4d72-ab0b-f6e074373dea.png" width="100px;" alt=""/>
+    </td>    
+    <td align="center">
+      <img src="https://user-images.githubusercontent.com/62709718/208676001-b838be17-a6da-4954-8382-7b537a359f2a.png" width="100px;" alt=""/>
+    </td>
+    <td align="center">
+      <img src="https://user-images.githubusercontent.com/62709718/208675953-3dbf10de-ed57-4b9a-9a5a-903dd5b8e708.png" width="100px;" alt=""/>
+    </td>
+    <td align="center">
+      <img src="https://user-images.githubusercontent.com/62709718/208675588-1fc2c6ec-0a10-4496-b7de-39cfbfa5e7ab.png" width="100px;" alt=""/>
+    </td>
+  </tr>
+  <tr>    
+    <td align="center">
+      <a href="https://github.com/dahui-sharon-kim">
+        <div>dahui-sharon-kim</div>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/jong-k">
+        <div>jong-k</div>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Duck-98">
+        <div>Duck-98</div>
+      </a>
+    </td>    
+    <td align="center">
+      <a href="https://github.com/shinwonse">
+        <div>shinwonse (팀장)</div>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/abcabcp">
+        <div>abcabcp</div>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/dong53358">
+        <div>dong53358</div>
+      </a>
+    </td>
+  </tr>
+</table>
