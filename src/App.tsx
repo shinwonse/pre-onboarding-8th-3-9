@@ -12,7 +12,7 @@ function App() {
   const downPress = useKeyPress('ArrowDown');
   const upPress = useKeyPress('ArrowUp');
   const enterPress = useKeyPress('Enter');
-  const [cursor, setCursor] = useState<number>(0);
+  const [cursor, setCursor] = useState<number>(-1);
   const [hovered, setHovered] = useState({ sickCd: '', sickNm: '' });
 
   const MemoizedHandleChange = useCallback(
