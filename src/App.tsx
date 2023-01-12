@@ -7,7 +7,8 @@ function App() {
   const [focus, setFocus] = useState(false);
   const [keyword, setKeyword] = useState('');
 
-  const url = keyword && `/sick?q=${keyword}`;
+  const url =
+    keyword && `${process.env.REACT_APP_SERVER_URL}/sick?q=${keyword}`;
   const { data: searchResult } = useFetch(url);
 
   return (
