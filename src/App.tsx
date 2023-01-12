@@ -1,24 +1,14 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { SearchResultType } from '@/interface/SearchResultType';
 import './assets/base.scss';
+import { useFetch } from './hooks/useFetch';
 
 function App() {
   const [focus, setFocus] = useState(false);
   const [keyword, setKeyword] = useState('');
-  const [searchResult, setSearchResult] = useState<SearchResultType[]>();
-  //TODO: best practice...?
-  const onSearch = useCallback(() => {
-    fetch(`${process.env.REACT_APP_SERVER_URL}?q=${keyword}`)
-      .then((response) => response.json())
-      .then((data) => setSearchResult(data))
-      .then(() => console.info('calling api'));
-  }, [keyword]);
 
-  useEffect(() => {
-    if (!keyword.trim()) return;
-    onSearch();
-  }, [keyword]);
+  const url = keyword && `/sick?q=${keyword}`;
+  const { data: searchResult } = useFetch(url);
 
   return (
     <div className="App">
@@ -31,23 +21,23 @@ function App() {
             onBlur={() => setFocus(false)}
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
-            className={!keyword ? 'search-input' : 'search-input keword'}
+            className={!keyword ? 'search-input' : 'search-input keyword'}
             placeholder={!focus ? '질환명을 입력해 주세요' : ''}
           />
-          <button className="search-cancle" />
-          <button onClick={() => onSearch()} className="search-handler" />
+          <button className="search-cancel" />
+          <button onClick={() => useFetch(url)} className="search-handler" />
         </div>
       </div>
       {focus && keyword.trim() && (
-        <div className="keword-contents">
-          <p className="keword-sub-title">추천 검색어</p>
+        <div className="keyword-contents">
+          <p className="keyword-sub-title">추천 검색어</p>
           {searchResult?.length === 0 && (
-            <p className="keword-none">검색어 없음</p>
+            <p className="keyword-none">검색어 없음</p>
           )}
           {searchResult && (
-            <ul className="keword-list">
-              {searchResult.map((result) => (
-                <li key={result.sickCd} className="keword-item">
+            <ul className="keyword-list">
+              {searchResult.map((result: any) => (
+                <li key={result.sickCd} className="keyword-item">
                   <img
                     src="images/icon_search.png"
                     alt="search-icon"
