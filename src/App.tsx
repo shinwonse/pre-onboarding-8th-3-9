@@ -29,7 +29,6 @@ function App() {
           <button onClick={() => useFetch(url)} className="search-handler" />
         </div>
       </div>
-      결
     </div>
   );
 }
