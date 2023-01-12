@@ -87,11 +87,11 @@ body {
     color: #73777b;
   }
   & .keyword-list {
-    padding: 0 20px;
     & .keyword-item {
       display: flex;
       align-items: center;
       font-size: 16px;
+      padding: 15px;
       margin-bottom: 15px;
       & .search-icon {
         margin-right: 10px;
