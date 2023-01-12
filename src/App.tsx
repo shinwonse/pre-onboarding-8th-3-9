@@ -17,8 +17,12 @@ function App() {
 
   const MemoizedHandleChange = useCallback(
     debounce((e: ChangeEvent<HTMLInputElement>) => {
+      const pattern = /([^가-힣\x20])/i;
+      if (pattern.test(e.target.value.slice(-1))) {
+        return;
+      }
       setKeyword(e.target.value);
-    }, 1000),
+    }, 500),
     []
   );
 
