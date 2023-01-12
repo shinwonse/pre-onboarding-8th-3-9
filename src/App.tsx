@@ -8,6 +8,7 @@ import { debounce } from './utils';
 function App() {
   const [focus, setFocus] = useState(false);
   const [keyword, setKeyword] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const [selected, setSelected] = useState({ sickCd: '', sickNm: '' });
   const downPress = useKeyPress('ArrowDown');
   const upPress = useKeyPress('ArrowUp');
@@ -24,6 +25,14 @@ function App() {
       setKeyword(e.target.value);
     }, 500),
     []
+  );
+
+  const handleInputValueChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.target.value);
+      MemoizedHandleChange(e);
+    },
+    [inputValue]
   );
 
   const url =
@@ -43,15 +52,19 @@ function App() {
     }
   }, [upPress]);
   useEffect(() => {
-    if (searchResult?.length && enterPress) {
+    if (searchResult?.length) {
       setSelected(searchResult[cursor]);
     }
   }, [cursor, enterPress]);
   useEffect(() => {
+    if (!hovered.sickCd) return;
     if (searchResult?.length && hovered) {
       setCursor(searchResult.indexOf(hovered));
     }
   }, [hovered]);
+  useEffect(() => {
+    setInputValue(selected?.sickNm);
+  }, [selected]);
 
   return (
     <div className="App">
@@ -60,9 +73,10 @@ function App() {
         <div className={!focus ? 'search-contents' : 'search-contents focus'}>
           <input
             type="text"
+            value={inputValue}
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
-            onChange={MemoizedHandleChange}
+            onChange={handleInputValueChange}
             className={!keyword ? 'search-input' : 'search-input keyword'}
             placeholder={!focus ? '질환명을 입력해 주세요' : ''}
           />
