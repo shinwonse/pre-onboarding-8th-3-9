@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { SearchResultType } from './interface/SearchResultType';
+import { SearchResultType } from '@/interface/SearchResultType';
 import './assets/base.scss';
 
 function App() {
