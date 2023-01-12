@@ -46,16 +46,22 @@ export const useFetch = (url: string) => {
     const fetchData = async () => {
       dispatch({ type: 'FETCHING' });
       if (cache.current[url]) {
-        console.log('from cache');
+        console.info(
+          '%ccalling cache',
+          'background: radial-gradient(red, green, blue); padding: 1px;'
+        );
         const data = cache.current[url];
-        dispatch({ type: 'FETCHED', payload: data.data });
+        dispatch({ type: 'FETCHED', payload: data });
       } else {
-        console.log('from api');
+        console.info(
+          '%ccalling api',
+          'background: radial-gradient(red, green, blue); padding: 1px;'
+        );
         const response = await fetch(url);
         const data = await response.json();
         cache.current[url] = data;
         if (cancelRequest) return;
-        dispatch({ type: 'FETCHED', payload: data.data });
+        dispatch({ type: 'FETCHED', payload: data });
       }
     };
 
