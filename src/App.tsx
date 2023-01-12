@@ -20,24 +20,24 @@ function App() {
   const { data: searchResult } = useFetch(url);
 
   useEffect(() => {
-    if (searchResult.length && downPress) {
+    if (searchResult?.length && downPress) {
       setCursor((prevState) =>
         prevState < searchResult.length - 1 ? prevState + 1 : prevState
       );
     }
   }, [downPress]);
   useEffect(() => {
-    if (searchResult.length && upPress) {
+    if (searchResult?.length && upPress) {
       setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
     }
   }, [upPress]);
   useEffect(() => {
-    if (searchResult.length && enterPress) {
+    if (searchResult?.length && enterPress) {
       setSelected(searchResult[cursor]);
     }
   }, [cursor, enterPress]);
   useEffect(() => {
-    if (searchResult.length && hovered) {
+    if (searchResult?.length && hovered) {
       setCursor(searchResult.indexOf(hovered));
     }
   }, [hovered]);

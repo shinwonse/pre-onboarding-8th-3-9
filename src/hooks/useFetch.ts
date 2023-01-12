@@ -1,9 +1,14 @@
 import { useEffect, useRef, useReducer } from 'react';
 
+type dataType = {
+  sickCd: string;
+  sickNm: string;
+};
+
 type stateType = {
   status: string;
-  error?: string | null;
-  data?: actionType[];
+  data: dataType[] | undefined;
+  error?: null | [];
 };
 
 type actionType = {
@@ -11,27 +16,34 @@ type actionType = {
   payload?: [];
 };
 
-export const useFetch = (url: string) => {
-  const cache = useRef<any>({});
+type cacheTYPE = {
+  [key: string]: [];
+};
 
-  const initialState = {
+export const useFetch = (url: string) => {
+  const cache = useRef<cacheTYPE>({});
+
+  const initialState: stateType = {
     status: 'idle',
     error: null,
     data: [],
   };
 
-  const [state, dispatch] = useReducer((state: any, action: actionType) => {
-    switch (action.type) {
-      case 'FETCHING':
-        return { ...initialState, status: 'fetching' };
-      case 'FETCHED':
-        return { ...initialState, status: 'fetched', data: action.payload };
-      case 'FETCH_ERROR':
-        return { ...initialState, status: 'error', error: action.payload };
-      default:
-        return state;
-    }
-  }, initialState);
+  const [state, dispatch] = useReducer(
+    (state: stateType, action: actionType) => {
+      switch (action.type) {
+        case 'FETCHING':
+          return { ...initialState, status: 'fetching' };
+        case 'FETCHED':
+          return { ...initialState, status: 'fetched', data: action.payload };
+        case 'FETCH_ERROR':
+          return { ...initialState, status: 'error', error: action.payload };
+        default:
+          return state;
+      }
+    },
+    initialState
+  );
 
   useEffect(() => {
     let cancelRequest = false;
@@ -51,6 +63,7 @@ export const useFetch = (url: string) => {
           'background: radial-gradient(red, green, blue); padding: 1px;'
         );
         const data = cache.current[url];
+        console.log('data', data);
         dispatch({ type: 'FETCHED', payload: data });
       } else {
         console.info(
