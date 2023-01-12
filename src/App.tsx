@@ -6,7 +6,6 @@ import useKeyPress from './hooks/useKeyPress';
 import { debounce } from './utils';
 
 function App() {
-  const [inputValue, setInputValue] = useState('');
   const [focus, setFocus] = useState(false);
   const [keyword, setKeyword] = useState('');
   const [selected, setSelected] = useState({ sickCd: '', sickNm: '' });
@@ -18,15 +17,10 @@ function App() {
 
   const MemoizedHandleChange = useCallback(
     debounce((e: ChangeEvent<HTMLInputElement>) => {
-      setInputValue(e.target.value);
-    }, 500),
+      setKeyword(e.target.value);
+    }, 1000),
     []
   );
-
-  // 디바운스 테스트용 useEffect이므로 useFetch 연결후 삭제하셔도 됩니다
-  useEffect(() => {
-    console.log(inputValue);
-  }, [inputValue]);
 
   const url =
     keyword && `${process.env.REACT_APP_SERVER_URL}/sick?q=${keyword}`;
