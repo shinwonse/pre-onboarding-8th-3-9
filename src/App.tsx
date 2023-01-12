@@ -29,30 +29,7 @@ function App() {
           <button onClick={() => useFetch(url)} className="search-handler" />
         </div>
       </div>
-      {focus && keyword.trim() && (
-        <div className="keyword-contents">
-          <p className="keyword-sub-title">추천 검색어</p>
-          {searchResult?.length === 0 && (
-            <p className="keyword-none">검색어 없음</p>
-          )}
-          {searchResult && (
-            <ul className="keyword-list">
-              {searchResult.map((result: any) => (
-                <li key={result.sickCd} className="keyword-item">
-                  <img
-                    src="images/icon_search.png"
-                    alt="search-icon"
-                    className="search-icon"
-                  />
-                  {result.sickNm.split(keyword)[0]}
-                  <strong>{keyword}</strong>
-                  {result.sickNm.split(keyword)[1]}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      )}
+      결
     </div>
   );
 }
