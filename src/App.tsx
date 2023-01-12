@@ -1,15 +1,57 @@
-import { useState } from 'react';
+import { useEffect, useState, useCallback, ChangeEvent } from 'react';
 
 import './assets/base.scss';
 import { useFetch } from './hooks/useFetch';
+import useKeyPress from './hooks/useKeyPress';
+import { debounce } from './utils';
 
 function App() {
   const [focus, setFocus] = useState(false);
   const [keyword, setKeyword] = useState('');
+  const [selected, setSelected] = useState({ sickCd: '', sickNm: '' });
+  const downPress = useKeyPress('ArrowDown');
+  const upPress = useKeyPress('ArrowUp');
+  const enterPress = useKeyPress('Enter');
+  const [cursor, setCursor] = useState<number>(-1);
+  const [hovered, setHovered] = useState({ sickCd: '', sickNm: '' });
+
+  const MemoizedHandleChange = useCallback(
+    debounce((e: ChangeEvent<HTMLInputElement>) => {
+      const pattern = /([^가-힣\x20])/i;
+      if (pattern.test(e.target.value.slice(-1))) {
+        return;
+      }
+      setKeyword(e.target.value);
+    }, 500),
+    []
+  );
 
   const url =
     keyword && `${process.env.REACT_APP_SERVER_URL}/sick?q=${keyword}`;
   const { data: searchResult } = useFetch(url);
+
+  useEffect(() => {
+    if (searchResult?.length && downPress) {
+      setCursor((prevState) =>
+        prevState < searchResult.length - 1 ? prevState + 1 : prevState
+      );
+    }
+  }, [downPress]);
+  useEffect(() => {
+    if (searchResult?.length && upPress) {
+      setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
+    }
+  }, [upPress]);
+  useEffect(() => {
+    if (searchResult?.length && enterPress) {
+      setSelected(searchResult[cursor]);
+    }
+  }, [cursor, enterPress]);
+  useEffect(() => {
+    if (searchResult?.length && hovered) {
+      setCursor(searchResult.indexOf(hovered));
+    }
+  }, [hovered]);
 
   return (
     <div className="App">
@@ -20,8 +62,7 @@ function App() {
             type="text"
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
+            onChange={MemoizedHandleChange}
             className={!keyword ? 'search-input' : 'search-input keyword'}
             placeholder={!focus ? '질환명을 입력해 주세요' : ''}
           />
@@ -37,8 +78,15 @@ function App() {
           )}
           {searchResult && (
             <ul className="keyword-list">
-              {searchResult.map((result: any) => (
-                <li key={result.sickCd} className="keyword-item">
+              {searchResult.map((result: any, index: any) => (
+                <li
+                  key={result.sickCd}
+                  className="keyword-item"
+                  style={index === cursor ? { backgroundColor: '#ededed' } : {}}
+                  onClick={() => setSelected(result)}
+                  onMouseEnter={() => setHovered(result)}
+                  onMouseLeave={() => setHovered({ sickCd: '', sickNm: '' })}
+                >
                   <img
                     src="images/icon_search.png"
                     alt="search-icon"
