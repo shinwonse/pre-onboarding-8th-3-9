@@ -63,7 +63,6 @@ export const useFetch = (url: string) => {
           'background: radial-gradient(red, green, blue); padding: 1px;'
         );
         const data = cache.current[url];
-        console.log('data', data);
         dispatch({ type: 'FETCHED', payload: data });
       } else {
         console.info(

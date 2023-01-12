@@ -16,7 +16,7 @@
 - API 호출 최적화
   - [API 호출별로 로컬 캐싱 구현]()
   - [입력마다 API 호출하지 않도록 API 호출 횟수를 줄이는 전략 수립 및 실행]()
-- [키보드만으로 추천 검색어들로 이동 가능하도록 구현]()
+- [키보드만으로 추천 검색어들로 이동 가능하도록 구현](https://github.com/wanted-preonboarding-fe-internship-8th/pre-onboarding-8th-3-9/wiki/%ED%82%A4%EB%B3%B4%EB%93%9C%EB%A7%8C%EC%9C%BC%EB%A1%9C-%EC%B6%94%EC%B2%9C-%EA%B2%80%EC%83%89%EC%96%B4%EB%93%A4%EB%A1%9C-%EC%9D%B4%EB%8F%99-%EA%B0%80%EB%8A%A5%ED%95%98%EB%8F%84%EB%A1%9D-%EA%B5%AC%ED%98%84)
 
 ## 실행 방법
 
