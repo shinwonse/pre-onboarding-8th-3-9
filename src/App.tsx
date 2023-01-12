@@ -5,20 +5,20 @@ import './assets/base.scss';
 
 function App() {
   const [focus, setFocus] = useState(false);
-  const [keword, setKeword] = useState('');
+  const [keyword, setKeyword] = useState('');
   const [searchResult, setSearchResult] = useState<SearchResultType[]>();
   //TODO: best practice...?
   const onSearch = useCallback(() => {
-    fetch(`${process.env.REACT_APP_SERVER_URL}?q=${keword}`)
+    fetch(`${process.env.REACT_APP_SERVER_URL}?q=${keyword}`)
       .then((response) => response.json())
       .then((data) => setSearchResult(data))
       .then(() => console.info('calling api'));
-  }, [keword]);
+  }, [keyword]);
 
   useEffect(() => {
-    if (!keword.trim()) return;
+    if (!keyword.trim()) return;
     onSearch();
-  }, [keword]);
+  }, [keyword]);
 
   return (
     <div className="App">
@@ -29,16 +29,16 @@ function App() {
             type="text"
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
-            value={keword}
-            onChange={(e) => setKeword(e.target.value)}
-            className={!keword ? 'search-input' : 'search-input keword'}
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+            className={!keyword ? 'search-input' : 'search-input keword'}
             placeholder={!focus ? '질환명을 입력해 주세요' : ''}
           />
           <button className="search-cancle" />
           <button onClick={() => onSearch()} className="search-handler" />
         </div>
       </div>
-      {focus && keword.trim() && (
+      {focus && keyword.trim() && (
         <div className="keword-contents">
           <p className="keword-sub-title">추천 검색어</p>
           {searchResult?.length === 0 && (
@@ -53,9 +53,9 @@ function App() {
                     alt="search-icon"
                     className="search-icon"
                   />
-                  {result.sickNm.split(keword)[0]}
-                  <strong>{keword}</strong>
-                  {result.sickNm.split(keword)[1]}
+                  {result.sickNm.split(keyword)[0]}
+                  <strong>{keyword}</strong>
+                  {result.sickNm.split(keyword)[1]}
                 </li>
               ))}
             </ul>
