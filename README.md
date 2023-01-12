@@ -12,7 +12,7 @@
 
 ## 개발 과정 및 Best Practice
 
-- [질환명 검색시 API 호출 통해서 검색어 추천 기능]()
+- [질환명 검색시 API 호출 통해서 검색어 추천 기능](https://github.com/wanted-preonboarding-fe-internship-8th/pre-onboarding-8th-3-9/wiki/%EC%A7%88%ED%99%98%EB%AA%85-%EA%B2%80%EC%83%89%EC%8B%9C-API-%ED%98%B8%EC%B6%9C-%ED%86%B5%ED%95%B4%EC%84%9C-%EA%B2%80%EC%83%89%EC%96%B4-%EC%B6%94%EC%B2%9C-%EA%B8%B0%EB%8A%A5)
 - API 호출 최적화
   - [API 호출별로 로컬 캐싱 구현]()
   - [입력마다 API 호출하지 않도록 API 호출 횟수를 줄이는 전략 수립 및 실행]()
