@@ -22,7 +22,7 @@ function App() {
         return;
       }
       setKeyword(e.target.value);
-    }, 1000),
+    }, 500),
     []
   );
 
