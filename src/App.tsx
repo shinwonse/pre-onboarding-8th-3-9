@@ -73,6 +73,9 @@ function App() {
                   key={result.sickCd}
                   className="keyword-item"
                   style={index === cursor ? { backgroundColor: '#ededed' } : {}}
+                  onClick={() => setSelected(result)}
+                  onMouseEnter={() => setHovered(result)}
+                  onMouseLeave={() => setHovered({ sickCd: '', sickNm: '' })}
                 >
                   <img
                     src="images/icon_search.png"
