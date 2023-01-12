@@ -1,19 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, ChangeEvent } from 'react';
 
 import './assets/base.scss';
 import { useFetch } from './hooks/useFetch';
 import useKeyPress from './hooks/useKeyPress';
+import { debounce } from './utils';
 
 function App() {
+  const [inputValue, setInputValue] = useState('');
   const [focus, setFocus] = useState(false);
   const [keyword, setKeyword] = useState('');
-
   const [selected, setSelected] = useState({ sickCd: '', sickNm: '' });
   const downPress = useKeyPress('ArrowDown');
   const upPress = useKeyPress('ArrowUp');
   const enterPress = useKeyPress('Enter');
   const [cursor, setCursor] = useState<number>(0);
   const [hovered, setHovered] = useState({ sickCd: '', sickNm: '' });
+
+  const MemoizedHandleChange = useCallback(
+    debounce((e: ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.target.value);
+    }, 500),
+    []
+  );
+
+  // 디바운스 테스트용 useEffect이므로 useFetch 연결후 삭제하셔도 됩니다
+  useEffect(() => {
+    console.log(inputValue);
+  }, [inputValue]);
 
   const url =
     keyword && `${process.env.REACT_APP_SERVER_URL}/sick?q=${keyword}`;
@@ -51,8 +64,7 @@ function App() {
             type="text"
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
+            onChange={MemoizedHandleChange}
             className={!keyword ? 'search-input' : 'search-input keyword'}
             placeholder={!focus ? '질환명을 입력해 주세요' : ''}
           />
