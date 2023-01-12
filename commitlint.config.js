@@ -17,7 +17,7 @@ module.exports = {
         'revert',
         'asset',
         'style',
-        'dependency',
+        'build',
       ],
     ],
     'type-empty': [2, 'never'],
