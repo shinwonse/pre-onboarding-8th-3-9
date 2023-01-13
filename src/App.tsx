@@ -92,9 +92,11 @@ function App() {
                     alt="search-icon"
                     className="search-icon"
                   />
-                  {result.sickNm.split(keyword)[0]}
-                  <strong>{keyword}</strong>
-                  {result.sickNm.split(keyword)[1]}
+                  <span>
+                    {result.sickNm.split(keyword)[0]}
+                    <strong>{keyword}</strong>
+                    {result.sickNm.split(keyword)[1]}
+                  </span>
                 </li>
               ))}
             </ul>
