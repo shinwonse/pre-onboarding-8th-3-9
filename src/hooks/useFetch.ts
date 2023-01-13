@@ -59,7 +59,7 @@ export const useFetch = (url: string) => {
       dispatch({ type: 'FETCHING' });
       if (cache.current[url]) {
         console.info(
-          '%ccalling cache',
+          '%ccached data',
           'background: radial-gradient(red, green, blue); padding: 1px;'
         );
         const data = cache.current[url];
@@ -67,7 +67,7 @@ export const useFetch = (url: string) => {
       } else {
         console.info(
           '%ccalling api',
-          'background: radial-gradient(red, green, blue); padding: 1px;'
+          'background: radial-gradient(grey, black, grey); padding: 1px;'
         );
         const response = await fetch(url);
         const data = await response.json();
