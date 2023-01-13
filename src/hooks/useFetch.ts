@@ -59,11 +59,10 @@ export const useFetch = (url: string) => {
       dispatch({ type: 'FETCHING' });
       if (cache.current[url]) {
         console.info(
-          '%ccalling cache',
-          'background: radial-gradient(red, green, blue); padding: 1px;'
+          '%ccached data',
+          'background: radial-gradient(grey, black, grey); padding: 1px;'
         );
         const data = cache.current[url];
-        console.log('data', data);
         dispatch({ type: 'FETCHED', payload: data });
       } else {
         console.info(
