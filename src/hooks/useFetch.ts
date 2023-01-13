@@ -60,14 +60,14 @@ export const useFetch = (url: string) => {
       if (cache.current[url]) {
         console.info(
           '%ccached data',
-          'background: radial-gradient(grey, black, grey); padding: 1px;'
+          'background: radial-gradient(red, green, blue); padding: 1px;'
         );
         const data = cache.current[url];
         dispatch({ type: 'FETCHED', payload: data });
       } else {
         console.info(
           '%ccalling api',
-          'background: radial-gradient(red, green, blue); padding: 1px;'
+          'background: radial-gradient(grey, black, grey); padding: 1px;'
         );
         const response = await fetch(url);
         const data = await response.json();
